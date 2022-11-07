@@ -9,7 +9,7 @@
 ## API REST para comércio eletrônico, desenvolvido em Node.JS, MongoDB, Express e algumas bibliotecas extras.
 
 <div align="center">
-    <img src="./print.PNG" alt="daily.dev" height="250">
+    <img src="./print.PNG" alt="daily.dev" height="500">
    
 </div>
 
