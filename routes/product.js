@@ -81,4 +81,18 @@ router.get("/", async (req, res) => {
     }
 });
 
+//SEARCH
+
+router.get("/search", async (req, res, next) => {
+    const query = req.query.q;
+    try {
+        const product = await Product.find({
+            title: { $regex: query, $options: "i" },
+        }).limit(40);
+        res.status(200).json(product);
+    } catch (err) {
+        next(err);
+    }
+});
+
 module.exports = router;
