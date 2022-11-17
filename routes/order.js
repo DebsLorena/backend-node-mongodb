@@ -103,4 +103,42 @@ router.get("/income", verifyTokenAndAdmin, async (req, res) => {
     }
 });
 
+
+// GET DAY INCOME
+
+router.get("/incomeday", verifyTokenAndAdmin, async (req, res) => {
+    const productId = req.query.pid;
+    const date = new Date();
+    const lastDay = new Date(date.setDate(date.getDate() - 1));
+    const previousDay = new Date(new Date().setDate(lastDay.getDate() - 1));
+
+    try {
+        const incomeDay = await Order.aggregate([
+            {
+                $match: {
+                    createdAt: { $gte: previousDay }, ...(productId && {
+                        products: { $elemMatch: { productId } }
+                    }),
+                },
+            },
+            {
+                $project: {
+                    dayOfMonth: { $dayOfMonth: "$createdAt" },
+                    sales: "$amount",
+                },
+            },
+            {
+                $group: {
+                    _id: "$dayOfMonth",
+                    total: { $sum: "$sales" },
+                },
+            },
+        ]);
+        res.status(200).json(incomeDay);
+        
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;

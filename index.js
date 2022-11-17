@@ -8,6 +8,9 @@ const productRoute = require("./routes/product");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const stripeRoute = require("./routes/stripe");
+const sliderRoute = require("./routes/slider");
+const bannerRoute = require("./routes/banner")
+const newsletterRoute = require("./routes/newsletter")
 const cors = require("cors");
 
 dotenv.config();
@@ -28,6 +31,9 @@ app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
 app.use("/api/search", productRoute);
+app.use("/api/sliders", sliderRoute);
+app.use("/api/banners", bannerRoute);
+app.use("/api/newsletters", newsletterRoute);
 
 
 app.listen(process.env.PORT || 5000, () => {
