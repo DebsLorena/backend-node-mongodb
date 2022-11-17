@@ -20,9 +20,12 @@ const SliderSchema = new mongoose.Schema(
 
         categories: {
             type: Array 
+<<<<<<< HEAD
         },
         bg: {
             type: String 
+=======
+>>>>>>> 1661d3374a76b1ea61cfa8bb03e71b925ab048aa
         }
     }, 
     {

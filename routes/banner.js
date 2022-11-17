@@ -3,7 +3,11 @@ const { verifyTokenAndAuthorization, verifyTokenAndAdmin } = require("./verifyTo
 
 const router = require("express").Router();
 
+<<<<<<< HEAD
 //CREATE BANNER
+=======
+//CREATE SLIDER
+>>>>>>> 1661d3374a76b1ea61cfa8bb03e71b925ab048aa
 
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
     const newBanner = new Banner(req.body);
@@ -16,10 +20,18 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
     };
 });
 
+<<<<<<< HEAD
 //UPDATE BANNER
 
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
 
+=======
+//UPDATE SLIDER
+
+router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
+
+
+>>>>>>> 1661d3374a76b1ea61cfa8bb03e71b925ab048aa
     try {
         const updatedBanner = await Banner.findByIdAndUpdate(req.params.id,
             {
@@ -38,7 +50,11 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
 
 });
 
+<<<<<<< HEAD
 //DELETE BANNER
+=======
+//DELETE SLIDER
+>>>>>>> 1661d3374a76b1ea61cfa8bb03e71b925ab048aa
 
 router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
     try {
@@ -49,18 +65,30 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
     };
 });
 
+<<<<<<< HEAD
 //GET BANNER
+=======
+//GET SLIDER
+>>>>>>> 1661d3374a76b1ea61cfa8bb03e71b925ab048aa
 
 router.get("/find/:id", async (req, res) => {
     try {
         const banner = await Banner.findById(req.params.id);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1661d3374a76b1ea61cfa8bb03e71b925ab048aa
         res.status(200).json(banner);
     } catch (err) {
         res.status(500).json(err);
     };
 });
 
+<<<<<<< HEAD
 // GET ALL BANNER
+=======
+// GET ALL SLIDERS
+>>>>>>> 1661d3374a76b1ea61cfa8bb03e71b925ab048aa
 
 router.get("/", async (req, res) => {
     const qNew = req.query.new;
@@ -74,10 +102,17 @@ router.get("/", async (req, res) => {
             banners = await Banner.find({
                 categories: {
                     $in: [qCategory]
+<<<<<<< HEAD
                 },
             });
         } else {
             banners = await Banner.find()
+=======
+                }
+            });
+        } else {
+            banners = await Slider.find()
+>>>>>>> 1661d3374a76b1ea61cfa8bb03e71b925ab048aa
         }
 
         res.status(200).json(banners);
