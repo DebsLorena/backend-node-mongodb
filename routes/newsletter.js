@@ -42,27 +42,15 @@ router.get("/find/:id", async (req, res) => {
 // GET ALL Newsletter
 
 router.get("/", async (req, res) => {
-    const qNew = req.query.new;
-    // const qCategory = req.query.category;
+    const query = req.query.new;
     try {
-        let newsletters;
-
-        if (qNew) {
-            newsletters = await Newsletter.find().sort({ createdAt: -1 }).limit(1);
-        } else if (qCategory) {
-            newsletters = await Newsletter.find({
-                categories: {
-                    $in: [qCategory]
-                },
-            });
-        } else {
-            newsletters = await Newsletter.find()
-        }
-
-        res.status(200).json(newsletters);
+        const newlestter = query
+            ? await Newsletter.find().sort({_id: -1}).limit(5)
+            : await Newsletter.find();
+        res.status(200).json(newlestter);
     } catch (err) {
         res.status(500).json(err);
-    };
+    }
 });
 
 module.exports = router;

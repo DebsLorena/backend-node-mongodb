@@ -10,10 +10,8 @@ const orderRoute = require("./routes/order");
 const stripeRoute = require("./routes/stripe");
 const sliderRoute = require("./routes/slider");
 const bannerRoute = require("./routes/banner")
-<<<<<<< HEAD
 const newsletterRoute = require("./routes/newsletter")
-=======
->>>>>>> 1661d3374a76b1ea61cfa8bb03e71b925ab048aa
+
 const cors = require("cors");
 
 dotenv.config();
@@ -36,10 +34,8 @@ app.use("/api/checkout", stripeRoute);
 app.use("/api/search", productRoute);
 app.use("/api/sliders", sliderRoute);
 app.use("/api/banners", bannerRoute);
-<<<<<<< HEAD
-app.use("/api/newsletters", newsletterRoute);
-=======
->>>>>>> 1661d3374a76b1ea61cfa8bb03e71b925ab048aa
+app.use("/api/newsletter", newsletterRoute);
+
 
 
 app.listen(process.env.PORT || 5000, () => {
